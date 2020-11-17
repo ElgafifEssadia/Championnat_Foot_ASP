@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="41939eeb8efb4f2ea804159c1a09420c" Name="Diagram1">
+        <EntityTypeShape EntityType="championnatModel.Arbitrage" Width="1.5" PointX="8.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Arbitre" Width="1.5" PointX="6" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.But" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Entrainer" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Entraineur" Width="1.5" PointX="3.75" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Equipe" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Joueur" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Journee" Width="1.5" PointX="1.625" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Match" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Remplacement" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Saison" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Selection" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.Stade" Width="1.5" PointX="3.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="championnatModel.User" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="championnatModel.FK_Arbitrage_ToArbitre" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Arbitrage_ToMatchs" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Buts_ToJoueur" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Buts_ToMatchs" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Entrainer_ToEntraineur" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Entrainer_ToEquipe" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Entrainer_ToSaison" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Matchs_ToEquipe" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Matchs_ToEquipe2" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Selection_ToEquipe" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Remplacement_ToJoueur" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Remplacement_ToJoueur2" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Selection_ToJoueur" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Journee_ToSaison" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Matchs_ToStade" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Remplacement_ToMatchs" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.FK_Selection_ToSaison" ManuallyRouted="false" />
+        <AssociationConnector Association="championnatModel.Participer" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

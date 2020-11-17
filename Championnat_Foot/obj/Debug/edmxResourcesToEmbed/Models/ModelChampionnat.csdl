@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="championnatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Arbitrage">
+    <Key>
+      <PropertyRef Name="codearb" />
+      <PropertyRef Name="codematch" />
+    </Key>
+    <Property Name="codearb" Type="Int32" Nullable="false" />
+    <Property Name="codematch" Type="Int32" Nullable="false" />
+    <Property Name="post" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Arbitre" Relationship="Self.FK_Arbitrage_ToArbitre" FromRole="Arbitrage" ToRole="Arbitre" />
+    <NavigationProperty Name="Match" Relationship="Self.FK_Arbitrage_ToMatchs" FromRole="Arbitrage" ToRole="Matchs" />
+  </EntityType>
+  <EntityType Name="Arbitre">
+    <Key>
+      <PropertyRef Name="codearb" />
+    </Key>
+    <Property Name="codearb" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="daten" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nationalite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Arbitrages" Relationship="Self.FK_Arbitrage_ToArbitre" FromRole="Arbitre" ToRole="Arbitrage" />
+  </EntityType>
+  <EntityType Name="But">
+    <Key>
+      <PropertyRef Name="codematch" />
+      <PropertyRef Name="codejou" />
+      <PropertyRef Name="minute" />
+    </Key>
+    <Property Name="codematch" Type="Int32" Nullable="false" />
+    <Property Name="codejou" Type="Int32" Nullable="false" />
+    <Property Name="minute" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Joueur" Relationship="Self.FK_Buts_ToJoueur" FromRole="Buts" ToRole="Joueur" />
+    <NavigationProperty Name="Match" Relationship="Self.FK_Buts_ToMatchs" FromRole="Buts" ToRole="Matchs" />
+  </EntityType>
+  <EntityType Name="Entrainer">
+    <Key>
+      <PropertyRef Name="nomeq" />
+      <PropertyRef Name="codesai" />
+    </Key>
+    <Property Name="nomeq" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codesai" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codeent" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Entraineur" Relationship="Self.FK_Entrainer_ToEntraineur" FromRole="Entrainer" ToRole="Entraineur" />
+    <NavigationProperty Name="Equipe" Relationship="Self.FK_Entrainer_ToEquipe" FromRole="Entrainer" ToRole="Equipe" />
+    <NavigationProperty Name="Saison" Relationship="Self.FK_Entrainer_ToSaison" FromRole="Entrainer" ToRole="Saison" />
+  </EntityType>
+  <EntityType Name="Entraineur">
+    <Key>
+      <PropertyRef Name="codeent" />
+    </Key>
+    <Property Name="codeent" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="daten" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nationnalite" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Entrainers" Relationship="Self.FK_Entrainer_ToEntraineur" FromRole="Entraineur" ToRole="Entrainer" />
+  </EntityType>
+  <EntityType Name="Equipe">
+    <Key>
+      <PropertyRef Name="NomEq" />
+    </Key>
+    <Property Name="NomEq" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AbreEq" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Adresse" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Logo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Entrainers" Relationship="Self.FK_Entrainer_ToEquipe" FromRole="Equipe" ToRole="Entrainer" />
+    <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_ToEquipe" FromRole="Equipe" ToRole="Matchs" />
+    <NavigationProperty Name="Matchs1" Relationship="Self.FK_Matchs_ToEquipe2" FromRole="Equipe" ToRole="Matchs" />
+    <NavigationProperty Name="Selections" Relationship="Self.FK_Selection_ToEquipe" FromRole="Equipe" ToRole="Selection" />
+  </EntityType>
+  <EntityType Name="Joueur">
+    <Key>
+      <PropertyRef Name="CodeJou" />
+    </Key>
+    <Property Name="CodeJou" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Poste" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nationalite" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Buts" Relationship="Self.FK_Buts_ToJoueur" FromRole="Joueur" ToRole="Buts" />
+    <NavigationProperty Name="Remplacements" Relationship="Self.FK_Remplacement_ToJoueur" FromRole="Joueur" ToRole="Remplacement" />
+    <NavigationProperty Name="Remplacements1" Relationship="Self.FK_Remplacement_ToJoueur2" FromRole="Joueur" ToRole="Remplacement" />
+    <NavigationProperty Name="Selections" Relationship="Self.FK_Selection_ToJoueur" FromRole="Joueur" ToRole="Selection" />
+    <NavigationProperty Name="Matchs" Relationship="Self.Participer" FromRole="Joueur" ToRole="Matchs" />
+  </EntityType>
+  <EntityType Name="Journee">
+    <Key>
+      <PropertyRef Name="NumJour" />
+      <PropertyRef Name="CodeSai" />
+    </Key>
+    <Property Name="NumJour" Type="Int32" Nullable="false" />
+    <Property Name="CodeSai" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Date_Debut" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Date_Fin" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Detail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Saison" Relationship="Self.FK_Journee_ToSaison" FromRole="Journee" ToRole="Saison" />
+  </EntityType>
+  <EntityType Name="Match">
+    <Key>
+      <PropertyRef Name="codeMatch" />
+    </Key>
+    <Property Name="codeMatch" Type="Int32" Nullable="false" />
+    <Property Name="NomEqDom" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NomEqVis" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nomStd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateMatch" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Attendence" Type="Int32" Nullable="false" />
+    <Property Name="Temperature" Type="Int32" Nullable="false" />
+    <Property Name="Humidite" Type="Int32" Nullable="false" />
+    <Property Name="ButDom" Type="Int32" Nullable="false" />
+    <Property Name="ButVis" Type="Int32" Nullable="false" />
+    <Property Name="TypeMatch" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Arbitrages" Relationship="Self.FK_Arbitrage_ToMatchs" FromRole="Matchs" ToRole="Arbitrage" />
+    <NavigationProperty Name="Buts" Relationship="Self.FK_Buts_ToMatchs" FromRole="Matchs" ToRole="Buts" />
+    <NavigationProperty Name="Equipe" Relationship="Self.FK_Matchs_ToEquipe" FromRole="Matchs" ToRole="Equipe" />
+    <NavigationProperty Name="Equipe1" Relationship="Self.FK_Matchs_ToEquipe2" FromRole="Matchs" ToRole="Equipe" />
+    <NavigationProperty Name="Stade" Relationship="Self.FK_Matchs_ToStade" FromRole="Matchs" ToRole="Stade" />
+    <NavigationProperty Name="Remplacements" Relationship="Self.FK_Remplacement_ToMatchs" FromRole="Matchs" ToRole="Remplacement" />
+    <NavigationProperty Name="Joueurs" Relationship="Self.Participer" FromRole="Matchs" ToRole="Joueur" />
+  </EntityType>
+  <EntityType Name="Remplacement">
+    <Key>
+      <PropertyRef Name="codematch" />
+      <PropertyRef Name="codejouin" />
+      <PropertyRef Name="codejouout" />
+    </Key>
+    <Property Name="codematch" Type="Int32" Nullable="false" />
+    <Property Name="codejouin" Type="Int32" Nullable="false" />
+    <Property Name="codejouout" Type="Int32" Nullable="false" />
+    <Property Name="minute" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Joueur" Relationship="Self.FK_Remplacement_ToJoueur" FromRole="Remplacement" ToRole="Joueur" />
+    <NavigationProperty Name="Joueur1" Relationship="Self.FK_Remplacement_ToJoueur2" FromRole="Remplacement" ToRole="Joueur" />
+    <NavigationProperty Name="Match" Relationship="Self.FK_Remplacement_ToMatchs" FromRole="Remplacement" ToRole="Matchs" />
+  </EntityType>
+  <EntityType Name="Saison">
+    <Key>
+      <PropertyRef Name="CodeSai" />
+    </Key>
+    <Property Name="CodeSai" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Entrainers" Relationship="Self.FK_Entrainer_ToSaison" FromRole="Saison" ToRole="Entrainer" />
+    <NavigationProperty Name="Journees" Relationship="Self.FK_Journee_ToSaison" FromRole="Saison" ToRole="Journee" />
+    <NavigationProperty Name="Selection" Relationship="Self.FK_Selection_ToSaison" FromRole="Saison" ToRole="Selection" />
+  </EntityType>
+  <EntityType Name="Selection">
+    <Key>
+      <PropertyRef Name="codesai" />
+    </Key>
+    <Property Name="codesai" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nomeq" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codejou" Type="Int32" Nullable="false" />
+    <Property Name="nummaillot" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Equipe" Relationship="Self.FK_Selection_ToEquipe" FromRole="Selection" ToRole="Equipe" />
+    <NavigationProperty Name="Joueur" Relationship="Self.FK_Selection_ToJoueur" FromRole="Selection" ToRole="Joueur" />
+    <NavigationProperty Name="Saison" Relationship="Self.FK_Selection_ToSaison" FromRole="Selection" ToRole="Saison" />
+  </EntityType>
+  <EntityType Name="Stade">
+    <Key>
+      <PropertyRef Name="NomStd" />
+    </Key>
+    <Property Name="NomStd" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Capacite" Type="Int32" Nullable="false" />
+    <Property Name="Adresse" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Ville" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Peleuse" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Largeur" Type="Int32" Nullable="false" />
+    <Property Name="Longueur" Type="Int32" Nullable="false" />
+    <Property Name="Photo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Matchs" Relationship="Self.FK_Matchs_ToStade" FromRole="Stade" ToRole="Matchs" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Tel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="isAdmin" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Arbitrage_ToArbitre">
+    <End Role="Arbitre" Type="Self.Arbitre" Multiplicity="1" />
+    <End Role="Arbitrage" Type="Self.Arbitrage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Arbitre">
+        <PropertyRef Name="codearb" />
+      </Principal>
+      <Dependent Role="Arbitrage">
+        <PropertyRef Name="codearb" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Arbitrage_ToMatchs">
+    <End Role="Matchs" Type="Self.Match" Multiplicity="1" />
+    <End Role="Arbitrage" Type="Self.Arbitrage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matchs">
+        <PropertyRef Name="codeMatch" />
+      </Principal>
+      <Dependent Role="Arbitrage">
+        <PropertyRef Name="codematch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buts_ToJoueur">
+    <End Role="Joueur" Type="Self.Joueur" Multiplicity="1" />
+    <End Role="Buts" Type="Self.But" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joueur">
+        <PropertyRef Name="CodeJou" />
+      </Principal>
+      <Dependent Role="Buts">
+        <PropertyRef Name="codejou" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Buts_ToMatchs">
+    <End Role="Matchs" Type="Self.Match" Multiplicity="1" />
+    <End Role="Buts" Type="Self.But" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matchs">
+        <PropertyRef Name="codeMatch" />
+      </Principal>
+      <Dependent Role="Buts">
+        <PropertyRef Name="codematch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrainer_ToEntraineur">
+    <End Role="Entraineur" Type="Self.Entraineur" Multiplicity="1" />
+    <End Role="Entrainer" Type="Self.Entrainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Entraineur">
+        <PropertyRef Name="codeent" />
+      </Principal>
+      <Dependent Role="Entrainer">
+        <PropertyRef Name="codeent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrainer_ToEquipe">
+    <End Role="Equipe" Type="Self.Equipe" Multiplicity="1" />
+    <End Role="Entrainer" Type="Self.Entrainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipe">
+        <PropertyRef Name="NomEq" />
+      </Principal>
+      <Dependent Role="Entrainer">
+        <PropertyRef Name="nomeq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Entrainer_ToSaison">
+    <End Role="Saison" Type="Self.Saison" Multiplicity="1" />
+    <End Role="Entrainer" Type="Self.Entrainer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saison">
+        <PropertyRef Name="CodeSai" />
+      </Principal>
+      <Dependent Role="Entrainer">
+        <PropertyRef Name="codesai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Matchs_ToEquipe">
+    <End Role="Equipe" Type="Self.Equipe" Multiplicity="1" />
+    <End Role="Matchs" Type="Self.Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipe">
+        <PropertyRef Name="NomEq" />
+      </Principal>
+      <Dependent Role="Matchs">
+        <PropertyRef Name="NomEqDom" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Matchs_ToEquipe2">
+    <End Role="Equipe" Type="Self.Equipe" Multiplicity="1" />
+    <End Role="Matchs" Type="Self.Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipe">
+        <PropertyRef Name="NomEq" />
+      </Principal>
+      <Dependent Role="Matchs">
+        <PropertyRef Name="NomEqVis" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Selection_ToEquipe">
+    <End Role="Equipe" Type="Self.Equipe" Multiplicity="1" />
+    <End Role="Selection" Type="Self.Selection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipe">
+        <PropertyRef Name="NomEq" />
+      </Principal>
+      <Dependent Role="Selection">
+        <PropertyRef Name="nomeq" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remplacement_ToJoueur">
+    <End Role="Joueur" Type="Self.Joueur" Multiplicity="1" />
+    <End Role="Remplacement" Type="Self.Remplacement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joueur">
+        <PropertyRef Name="CodeJou" />
+      </Principal>
+      <Dependent Role="Remplacement">
+        <PropertyRef Name="codejouin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remplacement_ToJoueur2">
+    <End Role="Joueur" Type="Self.Joueur" Multiplicity="1" />
+    <End Role="Remplacement" Type="Self.Remplacement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joueur">
+        <PropertyRef Name="CodeJou" />
+      </Principal>
+      <Dependent Role="Remplacement">
+        <PropertyRef Name="codejouout" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Selection_ToJoueur">
+    <End Role="Joueur" Type="Self.Joueur" Multiplicity="1" />
+    <End Role="Selection" Type="Self.Selection" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Joueur">
+        <PropertyRef Name="CodeJou" />
+      </Principal>
+      <Dependent Role="Selection">
+        <PropertyRef Name="codejou" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Journee_ToSaison">
+    <End Role="Saison" Type="Self.Saison" Multiplicity="1" />
+    <End Role="Journee" Type="Self.Journee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Saison">
+        <PropertyRef Name="CodeSai" />
+      </Principal>
+      <Dependent Role="Journee">
+        <PropertyRef Name="CodeSai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Matchs_ToStade">
+    <End Role="Stade" Type="Self.Stade" Multiplicity="1" />
+    <End Role="Matchs" Type="Self.Match" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stade">
+        <PropertyRef Name="NomStd" />
+      </Principal>
+      <Dependent Role="Matchs">
+        <PropertyRef Name="nomStd" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Remplacement_ToMatchs">
+    <End Role="Matchs" Type="Self.Match" Multiplicity="1" />
+    <End Role="Remplacement" Type="Self.Remplacement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Matchs">
+        <PropertyRef Name="codeMatch" />
+      </Principal>
+      <Dependent Role="Remplacement">
+        <PropertyRef Name="codematch" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Selection_ToSaison">
+    <End Role="Saison" Type="Self.Saison" Multiplicity="1" />
+    <End Role="Selection" Type="Self.Selection" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Saison">
+        <PropertyRef Name="CodeSai" />
+      </Principal>
+      <Dependent Role="Selection">
+        <PropertyRef Name="codesai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Participer">
+    <End Role="Joueur" Type="Self.Joueur" Multiplicity="*" />
+    <End Role="Matchs" Type="Self.Match" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="championnatEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Arbitrages" EntityType="Self.Arbitrage" />
+    <EntitySet Name="Arbitres" EntityType="Self.Arbitre" />
+    <EntitySet Name="Buts" EntityType="Self.But" />
+    <EntitySet Name="Entrainers" EntityType="Self.Entrainer" />
+    <EntitySet Name="Entraineurs" EntityType="Self.Entraineur" />
+    <EntitySet Name="Equipes" EntityType="Self.Equipe" />
+    <EntitySet Name="Joueurs" EntityType="Self.Joueur" />
+    <EntitySet Name="Journees" EntityType="Self.Journee" />
+    <EntitySet Name="Matchs" EntityType="Self.Match" />
+    <EntitySet Name="Remplacements" EntityType="Self.Remplacement" />
+    <EntitySet Name="Saisons" EntityType="Self.Saison" />
+    <EntitySet Name="Selections" EntityType="Self.Selection" />
+    <EntitySet Name="Stades" EntityType="Self.Stade" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Arbitrage_ToArbitre" Association="Self.FK_Arbitrage_ToArbitre">
+      <End Role="Arbitre" EntitySet="Arbitres" />
+      <End Role="Arbitrage" EntitySet="Arbitrages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Arbitrage_ToMatchs" Association="Self.FK_Arbitrage_ToMatchs">
+      <End Role="Matchs" EntitySet="Matchs" />
+      <End Role="Arbitrage" EntitySet="Arbitrages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buts_ToJoueur" Association="Self.FK_Buts_ToJoueur">
+      <End Role="Joueur" EntitySet="Joueurs" />
+      <End Role="Buts" EntitySet="Buts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Buts_ToMatchs" Association="Self.FK_Buts_ToMatchs">
+      <End Role="Matchs" EntitySet="Matchs" />
+      <End Role="Buts" EntitySet="Buts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrainer_ToEntraineur" Association="Self.FK_Entrainer_ToEntraineur">
+      <End Role="Entraineur" EntitySet="Entraineurs" />
+      <End Role="Entrainer" EntitySet="Entrainers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrainer_ToEquipe" Association="Self.FK_Entrainer_ToEquipe">
+      <End Role="Equipe" EntitySet="Equipes" />
+      <End Role="Entrainer" EntitySet="Entrainers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Entrainer_ToSaison" Association="Self.FK_Entrainer_ToSaison">
+      <End Role="Saison" EntitySet="Saisons" />
+      <End Role="Entrainer" EntitySet="Entrainers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Matchs_ToEquipe" Association="Self.FK_Matchs_ToEquipe">
+      <End Role="Equipe" EntitySet="Equipes" />
+      <End Role="Matchs" EntitySet="Matchs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Matchs_ToEquipe2" Association="Self.FK_Matchs_ToEquipe2">
+      <End Role="Equipe" EntitySet="Equipes" />
+      <End Role="Matchs" EntitySet="Matchs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Selection_ToEquipe" Association="Self.FK_Selection_ToEquipe">
+      <End Role="Equipe" EntitySet="Equipes" />
+      <End Role="Selection" EntitySet="Selections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remplacement_ToJoueur" Association="Self.FK_Remplacement_ToJoueur">
+      <End Role="Joueur" EntitySet="Joueurs" />
+      <End Role="Remplacement" EntitySet="Remplacements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remplacement_ToJoueur2" Association="Self.FK_Remplacement_ToJoueur2">
+      <End Role="Joueur" EntitySet="Joueurs" />
+      <End Role="Remplacement" EntitySet="Remplacements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Selection_ToJoueur" Association="Self.FK_Selection_ToJoueur">
+      <End Role="Joueur" EntitySet="Joueurs" />
+      <End Role="Selection" EntitySet="Selections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Journee_ToSaison" Association="Self.FK_Journee_ToSaison">
+      <End Role="Saison" EntitySet="Saisons" />
+      <End Role="Journee" EntitySet="Journees" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Matchs_ToStade" Association="Self.FK_Matchs_ToStade">
+      <End Role="Stade" EntitySet="Stades" />
+      <End Role="Matchs" EntitySet="Matchs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Remplacement_ToMatchs" Association="Self.FK_Remplacement_ToMatchs">
+      <End Role="Matchs" EntitySet="Matchs" />
+      <End Role="Remplacement" EntitySet="Remplacements" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Selection_ToSaison" Association="Self.FK_Selection_ToSaison">
+      <End Role="Saison" EntitySet="Saisons" />
+      <End Role="Selection" EntitySet="Selections" />
+    </AssociationSet>
+    <AssociationSet Name="Participer" Association="Self.Participer">
+      <End Role="Joueur" EntitySet="Joueurs" />
+      <End Role="Matchs" EntitySet="Matchs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

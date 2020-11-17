@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Championnat_Foot.Models.Match>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codeMatch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomEqDom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NomEqVis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomStd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateMatch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Attendence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Temperature)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Humidite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ButDom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ButVis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeMatch)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codeMatch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomEqDom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NomEqVis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomStd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateMatch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Attendence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Temperature)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Humidite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ButDom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ButVis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeMatch)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

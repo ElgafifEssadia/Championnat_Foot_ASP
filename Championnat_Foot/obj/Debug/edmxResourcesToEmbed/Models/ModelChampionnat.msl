@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="championnatModelStoreContainer" CdmEntityContainer="championnatEntities">
+    <EntitySetMapping Name="Arbitrages">
+      <EntityTypeMapping TypeName="championnatModel.Arbitrage">
+        <MappingFragment StoreEntitySet="Arbitrage">
+          <ScalarProperty Name="codearb" ColumnName="codearb" />
+          <ScalarProperty Name="codematch" ColumnName="codematch" />
+          <ScalarProperty Name="post" ColumnName="post" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Arbitres">
+      <EntityTypeMapping TypeName="championnatModel.Arbitre">
+        <MappingFragment StoreEntitySet="Arbitre">
+          <ScalarProperty Name="codearb" ColumnName="codearb" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="daten" ColumnName="daten" />
+          <ScalarProperty Name="nationalite" ColumnName="nationalite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buts">
+      <EntityTypeMapping TypeName="championnatModel.But">
+        <MappingFragment StoreEntitySet="Buts">
+          <ScalarProperty Name="codematch" ColumnName="codematch" />
+          <ScalarProperty Name="codejou" ColumnName="codejou" />
+          <ScalarProperty Name="minute" ColumnName="minute" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entrainers">
+      <EntityTypeMapping TypeName="championnatModel.Entrainer">
+        <MappingFragment StoreEntitySet="Entrainer">
+          <ScalarProperty Name="nomeq" ColumnName="nomeq" />
+          <ScalarProperty Name="codesai" ColumnName="codesai" />
+          <ScalarProperty Name="codeent" ColumnName="codeent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Entraineurs">
+      <EntityTypeMapping TypeName="championnatModel.Entraineur">
+        <MappingFragment StoreEntitySet="Entraineur">
+          <ScalarProperty Name="codeent" ColumnName="codeent" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="daten" ColumnName="daten" />
+          <ScalarProperty Name="nationnalite" ColumnName="nationnalite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipes">
+      <EntityTypeMapping TypeName="championnatModel.Equipe">
+        <MappingFragment StoreEntitySet="Equipe">
+          <ScalarProperty Name="NomEq" ColumnName="NomEq" />
+          <ScalarProperty Name="AbreEq" ColumnName="AbreEq" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Logo" ColumnName="Logo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Joueurs">
+      <EntityTypeMapping TypeName="championnatModel.Joueur">
+        <MappingFragment StoreEntitySet="Joueur">
+          <ScalarProperty Name="CodeJou" ColumnName="CodeJou" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Poste" ColumnName="Poste" />
+          <ScalarProperty Name="Nationalite" ColumnName="Nationalite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Journees">
+      <EntityTypeMapping TypeName="championnatModel.Journee">
+        <MappingFragment StoreEntitySet="Journee">
+          <ScalarProperty Name="NumJour" ColumnName="NumJour" />
+          <ScalarProperty Name="CodeSai" ColumnName="CodeSai" />
+          <ScalarProperty Name="Date_Debut" ColumnName="Date_Debut" />
+          <ScalarProperty Name="Date_Fin" ColumnName="Date_Fin" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Matchs">
+      <EntityTypeMapping TypeName="championnatModel.Match">
+        <MappingFragment StoreEntitySet="Matchs">
+          <ScalarProperty Name="codeMatch" ColumnName="codeMatch" />
+          <ScalarProperty Name="NomEqDom" ColumnName="NomEqDom" />
+          <ScalarProperty Name="NomEqVis" ColumnName="NomEqVis" />
+          <ScalarProperty Name="nomStd" ColumnName="nomStd" />
+          <ScalarProperty Name="DateMatch" ColumnName="DateMatch" />
+          <ScalarProperty Name="Attendence" ColumnName="Attendence" />
+          <ScalarProperty Name="Temperature" ColumnName="Temperature" />
+          <ScalarProperty Name="Humidite" ColumnName="Humidite" />
+          <ScalarProperty Name="ButDom" ColumnName="ButDom" />
+          <ScalarProperty Name="ButVis" ColumnName="ButVis" />
+          <ScalarProperty Name="TypeMatch" ColumnName="TypeMatch" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Remplacements">
+      <EntityTypeMapping TypeName="championnatModel.Remplacement">
+        <MappingFragment StoreEntitySet="Remplacement">
+          <ScalarProperty Name="codematch" ColumnName="codematch" />
+          <ScalarProperty Name="codejouin" ColumnName="codejouin" />
+          <ScalarProperty Name="codejouout" ColumnName="codejouout" />
+          <ScalarProperty Name="minute" ColumnName="minute" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Saisons">
+      <EntityTypeMapping TypeName="championnatModel.Saison">
+        <MappingFragment StoreEntitySet="Saison">
+          <ScalarProperty Name="CodeSai" ColumnName="CodeSai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Selections">
+      <EntityTypeMapping TypeName="championnatModel.Selection">
+        <MappingFragment StoreEntitySet="Selection">
+          <ScalarProperty Name="codesai" ColumnName="codesai" />
+          <ScalarProperty Name="nomeq" ColumnName="nomeq" />
+          <ScalarProperty Name="codejou" ColumnName="codejou" />
+          <ScalarProperty Name="nummaillot" ColumnName="nummaillot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stades">
+      <EntityTypeMapping TypeName="championnatModel.Stade">
+        <MappingFragment StoreEntitySet="Stade">
+          <ScalarProperty Name="NomStd" ColumnName="NomStd" />
+          <ScalarProperty Name="Capacite" ColumnName="Capacite" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Peleuse" ColumnName="Peleuse" />
+          <ScalarProperty Name="Largeur" ColumnName="Largeur" />
+          <ScalarProperty Name="Longueur" ColumnName="Longueur" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="championnatModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="isAdmin" ColumnName="isAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Participer" TypeName="championnatModel.Participer" StoreEntitySet="Participer">
+      <EndProperty Name="Joueur">
+        <ScalarProperty Name="CodeJou" ColumnName="codejou" />
+      </EndProperty>
+      <EndProperty Name="Matchs">
+        <ScalarProperty Name="codeMatch" ColumnName="codematch" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
